@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Travel Guide Chatbot</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1 class="heading">Welcome to Smart Travel Guide</h1>
+            <h2 class="sub-heading">Where do you want to go?</h2>
+        </header>
+
+        <!-- Location Input for User -->
+        <div class="location-input">
+            <input type="text" id="location" placeholder="Enter your destination">
+            <button id="search-location" class="material-symbols-rounded">search</button>
+        </div>
+
+        <ul class="suggestions">
+           <li class="suggestions-items">
+            <p class="text">Find top attractions in Paris</p>
+            <span class="material-symbols-rounded">location_on</span>
+           </li>
+           <li class="suggestions-items">
+            <p class="text">Recommend budget hotels near me</p>
+            <span class="material-symbols-rounded">hotel</span>
+           </li>
+           <li class="suggestions-items">
+            <p class="text">Check the weather at my destination</p>
+            <span class="material-symbols-rounded">cloud</span>
+           </li>
+           <li class="suggestions-items">
+            <p class="text">Suggest popular local restaurants</p>
+            <span class="material-symbols-rounded">restaurant</span>
+           </li>
+        </ul>
+
+        <div class="chats-container">
+            <div class="message user-message"></div>
+            <div class="message bot-message">
+                <img src="./travel-guide.jpeg" class="avatar">
+                <p class="message-text"></p>
+            </div>
+        </div>
+
+        <div id="map-container">
+            <h3>Map View</h3>
+            <iframe id="map" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+        <div id="weather-container">
+            <h3>Weather Updates</h3>
+            <p id="weather-info">Fetching latest weather...</p>
+        </div>
+
+        <div class="prompt-container">
+            <form action="#" class="prompt-form">
+                <input type="text" placeholder="Ask about your destination" class="prompt-input" required>
+                <button id="send-prompt-btn" class="material-symbols-rounded">arrow_upward</button>
+            </form>
+        </div>
+
+        <p class="disclaimer-text">Travel information might change, please verify before making plans.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
