@@ -8,34 +8,27 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         UserDAO userDAO = new UserDAO();
 
-        System.out.println("1. Register\n2. Login");
-        int choice = sc.nextInt();
-        sc.nextLine(); // Consume newline
+        System.out.print("Enter your email: ");
+        String email = sc.nextLine();
+        System.out.print("Enter your password: ");
+        String pass = sc.nextLine();
 
-        if (choice == 1) {
+        User user = userDAO.loginUser(email, pass);
+
+        if (user != null) {
+            System.out.println("\nLogin Successful! Welcome to the Travel Smart Guide App, " + user.getName() + "!");
+            // You can add more app features here later
+        } else {
+            System.out.println("\nUser does not exist. Please register first.\n");
+
             System.out.print("Enter Name: ");
             String name = sc.nextLine();
-            System.out.print("Enter Email: ");
-            String email = sc.nextLine();
-            System.out.print("Enter Password: ");
-            String pass = sc.nextLine();
             System.out.print("Enter Preferences: ");
             String pref = sc.nextLine();
 
-            User user = new User(name, email, pass, pref);
-            userDAO.registerUser(user);
-        } else if (choice == 2) {
-            System.out.print("Enter Email: ");
-            String email = sc.nextLine();
-            System.out.print("Enter Password: ");
-            String pass = sc.nextLine();
-
-            User user = userDAO.loginUser(email, pass);
-            if (user != null) {
-                System.out.println("Login Successful! Welcome, " + user.getName());
-            } else {
-                System.out.println("Invalid credentials!");
-            }
+            User newUser = new User(name, email, pass, pref);
+            userDAO.registerUser(newUser);
+            System.out.println("Welcome to the Travel Smart Guide App, " + name + "!");
         }
     }
 }
